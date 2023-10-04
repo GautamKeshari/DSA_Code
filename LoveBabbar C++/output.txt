@@ -1,0 +1,10 @@
+55 54 53 50 52 40 30 
+54 52 53 50 30 40 
+Print the array now: 
+55 53 54 52 50 
+
+Heap Sort is :
+Print the array now: 
+50 52 53 54 55 
+Using priority Queue here
+2

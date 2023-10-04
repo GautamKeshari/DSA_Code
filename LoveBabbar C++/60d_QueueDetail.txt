@@ -1,0 +1,13 @@
+INPUT RESTRICTED QUEUE -> 
+here,input can be inserted from the (rear) pointer only, but output can be done from pointer both  of the queue.
+push_back
+pop_front
+pop_rear
+
+OUTPUT RESTRICTED QUEUE -> 
+here,output can be done from the (front) pointer only, but input can be done from both side of the queue.
+push_back
+push_front
+pop_front
+
+Doubly EndedQueue ->
