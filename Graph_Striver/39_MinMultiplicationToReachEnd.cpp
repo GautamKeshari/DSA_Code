@@ -45,22 +45,22 @@ class Solution {
 
 //{ Driver Code Starts.
 
-int main() {
+// int main() {
 
-    int t;
-    cin >> t;
-    while (t--) {
-        int n;
-        cin >> n;
-        vector<int> arr(n);
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
-        int start, end;
-        cin >> start >> end;
-        Solution obj;
-        cout << obj.minimumMultiplications(arr, start, end) << endl;
-    }
-}
+//     int t;
+//     cin >> t;
+//     while (t--) {
+//         int n;
+//         cin >> n;
+//         vector<int> arr(n);
+//         for (int i = 0; i < n; i++) {
+//             cin >> arr[i];
+//         }
+//         int start, end;
+//         cin >> start >> end;
+//         Solution obj;
+//         cout << obj.minimumMultiplications(arr, start, end) << endl;
+//     }
+// }
 
 // } Driver Code 
