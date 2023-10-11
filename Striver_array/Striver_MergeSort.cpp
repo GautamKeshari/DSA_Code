@@ -33,6 +33,7 @@ void mergeSort(vector<int> &arr,int low,int high){
     mergeSort(arr,mid+1,high);
     merge(arr,low,mid,high); //O(n)
 }
+
 int main(){
     int n;cin>>n;
     vector<int> arr(n);
