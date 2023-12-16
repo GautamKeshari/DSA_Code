@@ -15,8 +15,8 @@
 //             dp[day][last]=0;
 //             for(int task=0;task<3;task++){
 //                 if(task!=last){
-//                     int point=points[day][task]+dp[day-1][task];
-//                     dp[day][last]=max(dp[day][last],point);
+//                     int cpoint=points[day][last]+dp[day-1][task];
+//                     dp[day][last]=max(dp[day][last],cpoint);
 //                 }
 //             }
 //         }

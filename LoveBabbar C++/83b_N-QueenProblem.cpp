@@ -12,7 +12,7 @@
 // class Solution{
 // private:
   
-//     void solve(int col,vector<vector<int> >&ans,vector<int> output,vector<int> leftRow,vector<int> lowerDiagonal,vector<int> upperDiagonal,int n){
+//     void solve(int col,vector<vector<int> >&ans,vector<int> output,vector<int> &leftRow,vector<int> &lowerDiagonal,vector<int> &upperDiagonal,int n){
 //         if(col==n){
 //             ans.push_back(output);
 //             return;

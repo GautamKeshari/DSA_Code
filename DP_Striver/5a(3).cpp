@@ -10,7 +10,7 @@
 //     for(int i=1;i<size;i++){
 //         int pick=nums[i]+0;  
 //         if(i>1){
-//             pick=nums[i]+dp[i-2];
+//             pick+=dp[i-2];
 //         }
 //         int nonpick=0+dp[i-1];
 //         dp[i]=max(pick,nonpick);
