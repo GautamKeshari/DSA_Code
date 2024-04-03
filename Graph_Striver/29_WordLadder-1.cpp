@@ -13,7 +13,7 @@
 //         q.push({startWord, 1});
         
 //         set<string> st(wordList.begin(),wordList.end());
-//         st.erase(startWord);
+//         st.erase(startWord);                    //see this line logic from video.
 //         // T.C. =N*word.length*26*log N
 //         while(!q.empty()){
 //             string word = q.front().first;
@@ -27,7 +27,7 @@
 //                 for( char ch='a';ch<='z';ch++){
 //                     // aat,bat,cat ..........zat.
 //                     word[i]=ch;
-//                     if(st.find(word) != st.end()){
+//                     if(st.find(word)!=st.end()){
 //                         q.push({word,steps+1});
 //                         st.erase(word);
 //                     }

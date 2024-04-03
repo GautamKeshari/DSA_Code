@@ -123,59 +123,35 @@ public:
     
     int sumOfLongRootToLeafPath(Node *root)
     {
-        if(root==NULL) return 0;
+        queue<pair<Node*,pair<int,int>>> q;   // node,sum,lvl
+        q.push(make_pair(root,make_pair(root->data,0)));
         
-        struct Element{
-            Node* nodes;
-            int level;
-            int sum;
-        };
-        
-        queue<Element> q;
-        
-        Element e;
-        e.nodes=root;
-        e.level=0;
-        e.sum=root->data;
-        
-        q.push(e);
-        
-        //maxLevel ,maxSum
-        int maxLevel=0;
-        int maxSum=root->data;
-        
+        pair<int,int> maxi;  //maxSum,level
         while(!q.empty()){
-            Element front = q.front();
+            pair<Node*,pair<int,int>> temp=q.front();
             q.pop();
-            Node* currNode=front.nodes;
             
-            if(front.level > maxLevel){
-                maxLevel=front.level;
-                maxSum=front.sum; 
-            }else if(front.level == maxLevel){
-                maxSum= max(front.sum,maxSum);
+            Node* currNode=temp.first;
+            int sum=temp.second.first;
+            int lvl=temp.second.second;
+            
+            if(lvl>maxi.second){
+                maxi.first=sum;
+                maxi.second=lvl;
+            }else{
+                maxi.first=max(maxi.first,sum);
             }
             
             if(currNode->left){
-                e.nodes=currNode->left;
-                e.level=front.level + 1;
-                //sum=sum upto above front nodes + curr->left->data
-                e.sum=e.nodes->data;
-                e.sum= e.sum + front.sum;
-                q.push(e);
+                q.push(make_pair(currNode->left,make_pair(sum+currNode->left->data,lvl+1)));
             }
             if(currNode->right){
-                e.nodes=currNode->right;
-                e.level=front.level + 1;
-                //sum=sum upto above front nodes + curr->left->data
-                e.sum=e.nodes->data;
-                e.sum= e.sum + front.sum;
-                q.push(e);
+                q.push(make_pair(currNode->right,make_pair(sum+currNode->right->data,lvl+1)));
             }
-            
         }
-        return maxSum;
         
+        // cout<<maxi.first<<" "<<maxi.second<<"\n";
+        return maxi.first;
     }
 };
 

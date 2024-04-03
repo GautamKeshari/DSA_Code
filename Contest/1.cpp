@@ -1,38 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define int long long int
+// # define long long long long
 
-signed main() {
+int main() {
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    int t=1;
+
+    int t;
+    cin>>t;
+
     while(t--){
-        int n;cin>>n;
-        vector<string> v(n);
-        vector<pair<int,string>> ans(n);
-        int cash;
-        cin>>cash;
-        for(int i=0;i<n;i++){
-            cin>>v[i];
-        }
-        for(int i=0;i<n;i++){
-            cin>>ans[i].first;
-            ans[i].second=v[i];
-        }
-        sort(ans.begin(),ans.end());
-        int c=0;
-        for(int i=0;i<n;i++){
-            if(cash>=ans[i].first){
-                cash=cash-ans[i].first;
-                c++;
+        int x,n;
+        cin>>x>>n;
+        int ans=1;
+        for(int i=1;i*i<=x;i++){
+            if(x%i==0){
+                if(i*n<=x){
+                    ans=max(ans,i);
+                }
             }
         }
-        if(c%2==1) c=-1;
-        for(int i=0;i<c;i++){
-            cout<<ans[i].second<<" - "<<ans[i].first<<endl;
-        }
+        cout<<ans<<"\n";
     }
     return 0;
 }
+
+

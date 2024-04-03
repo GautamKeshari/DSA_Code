@@ -21,7 +21,6 @@
 //         vector<int> indegree(V,0);
 // 	    vector<int> vis(V,0);
 // 	    queue<int> q;
-        
 //         for(int i=0;i<V;i++){
 //             for(auto it:adj[i]){
 //                 // i -> it
@@ -29,8 +28,7 @@
 //                 adjRev[it].push_back(i);
 // 	            indegree[i]++;
 //             }
-//         }
-        
+//         }  
 // 	    for(int i=0;i<V;i++){
 // 	        if(indegree[i]==0){
 // 	            q.push(i);
@@ -47,18 +45,14 @@
 // 	            if(indegree[it]==0){
 // 	                q.push(it);
 // 	            }
-// 	        }
-	        
+// 	        } 
 // 	    }
-// 	    sort(topo.begin(),topo.end());
-	    
+// 	    sort(topo.begin(),topo.end()); 
 // 	    return topo;
 //     }
 // };
 
-
 // //{ Driver Code Starts.
-
 // int main() {
 //     int t;
 //     cin >> t;
@@ -67,13 +61,11 @@
 //         int V, E;
 //         cin >> V >> E;
 //         vector<int> adj[V];
-
 //         for (int i = 0; i < E; i++) {
 //             int u, v;
 //             cin >> u >> v;
 //             adj[u].push_back(v);
 //         }
-
 //         Solution obj;
 //         vector<int> safeNodes = obj.eventualSafeNodes(V, adj);
 //         for (auto i : safeNodes) {

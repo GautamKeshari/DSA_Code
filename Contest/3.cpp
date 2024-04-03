@@ -1,64 +1,39 @@
-#define MOD 1000000007
+#include <bits/stdc++.h>
+using namespace std;
 
-class Solution{
-    public:
-    long long add(long long a, long long b) {
-        return (a%MOD + b%MOD)%MOD;
-    }
-    
-    long long multi(long long a, long long b) {
-        return ((a%MOD) * (b%MOD))%MOD;
-    }
-    
-    //recursion + memoization
-    long long solveMem(int n, int k, vector<int> & dp) {
+int main() {
+    int t;cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        int x=0,y=n/2;
+    	if(n&1){
+    	    x=n-1;
+    	    cout<<n-1<<" ";
+    	}else{
+    	    x=n;
+    	    cout<<n<<" ";
+    	} 
+    	if(k>1) cout<<y<<" ";
+    	int count=2;
         
-        if(n == 1) return k;
-        
-        if(n == 2) return add(k, multi(k, k-1));
-        
-        if(dp[n] != -1) return dp[n];
-        
-        return dp[n] = add(multi(solveMem(n-1, k, dp), k-1), multi(solveMem(n-2, k, dp), k-1));
-    }
-    
-    //Tabulation
-    long long solveTab(int n, int k) {
-        
-        vector<int> dp(n+1, 0);
-        
-        dp[1] = k;
-        
-        dp[2] = add(k, multi(k, k-1));
-        
-        for(int i=3; i<=n; ++i) {
-            dp[i] = add(multi(dp[i-1], k-1), multi(dp[i-2], k-1));
+        for(int i=1;i<y && count<=k;i++,count++){
+            cout<<i<<" ";
         }
-        return dp[n];
-    }
-    
-    //Tabulation with space optimized
-    long long solveTabSO(int n, int k) {
-        
-        long long prev2 = k;
-        
-        long long prev1 = add(k, multi(k, k-1));
-        
-        if(n == 1) return prev2;
-        
-        for(int i=3; i<=n; ++i) {
-            long long ans = add(multi(prev1, k-1), multi(prev2, k-1));
-            prev2 = prev1;
-            prev1 = ans; 
+        for(int i=y+1;i<x && count<=k;i++,count++){
+            cout<<i<<" ";
         }
-        
-        return prev1;
+        cout<<"\n";
     }
-    
-    long long countWays(int n, int k){
-        // vector<int> dp(n+1, -1);
-        // return solveMem(n, k, dp);
-        
-        return solveTabSO(n, k);
-    }
-}; 
+}
+
+
+3
+3 2
+3 3
+4 2
+
+
+2 3
+1 2 3
+2 4

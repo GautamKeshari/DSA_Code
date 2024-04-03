@@ -15,7 +15,7 @@
 // public:
 //     // Function to detect cycle in a directed graph.
 //     bool isCyclic(int V, vector<int> adj[]) {
-//         vector<int> indegree(V,0);
+//      vector<int> indegree(V,0);
 // 	    vector<int> vis(V,0);
 // 	    queue<int> q;
 	    
