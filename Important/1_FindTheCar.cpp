@@ -1,3 +1,5 @@
+// https://codeforces.com/contest/1971/problem/E
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -41,9 +43,37 @@ ll nCk(ll n, ll k){
 
 /*-----------------------------------------------*/
 
+int binary_search(int key,int s,int e,vi &arr){
+    while(s<=e){
+        int mid=(s+e)>>1;
+        if(arr[mid]==key) return mid;
+        else if(arr[mid]>key) e=mid-1;
+        else s=mid+1;
+    }
+    return e;
+}
+
 void solve(){
-    int r;cin>>r;
+    int n,k,q;
+    cin>>n>>k>>q;
+    vi dist(k+1,0),time(k+1,0);
+    for(int i=1;i<=k;i++) cin>>dist[i];
+    for(int i=1;i<=k;i++) cin>>time[i];
+
+    for(int i=0;i<q;i++){
+        ll x;cin>>x;
+        int end=binary_search(x,0,k,dist);
+        if(dist[end]==x){
+            cout<<time[end]<<" ";
+            continue;
+        }else{
+            ll ans=time[end]+(x-dist[end])*(time[end+1]-time[end])/(dist[end+1]-dist[end]);
+
+            cout<<ans<<" ";
+        }
+    }
     
+    cout<<nl;
 }
 
 int main(){

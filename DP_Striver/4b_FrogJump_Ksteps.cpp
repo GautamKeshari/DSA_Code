@@ -1,7 +1,7 @@
-// Tabulation
+// Space Optimized
 
 // int frogjumps(int n, vector<int> heights){
-//     vector<int> dp(n);
+//     vector<int> list(k,0);
 //     dp[0]=0;
 //     for(int ind=1;ind<n;ind++){
 //         int mini=INT_MAX;
@@ -11,7 +11,9 @@
 //                 mini=min(mini,jump);
 //             }
 //         }
-//         dp[ind]=mini;
+//         for(int i=0;i<=k-2;i++){
+//             list[i]=list[i+1];
+//         }
+//         list[k-1]=mini;
 //     }
-//     reutn dp[n-1];
 // }

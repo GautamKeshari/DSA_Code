@@ -14,7 +14,6 @@
 //                 int left=grid[i][j];
 //                 if(j>0) left+=dp[i][j-1];
 //                 else left += 1e9;
-
 //                 dp[i][j]=min(up,left);
 //             }
 //         }
