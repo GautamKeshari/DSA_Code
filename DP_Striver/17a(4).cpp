@@ -1,3 +1,5 @@
+// This code is wrong change according to 3rd code.
+
 // int mod=1000000007;
 // int findWays(vector<int>& arr, int k)
 // {

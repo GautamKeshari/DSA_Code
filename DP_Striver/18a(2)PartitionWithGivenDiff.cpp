@@ -31,6 +31,5 @@
 //     int totalSum=0;
 //     for(auto &it:arr) totalSum+=it;
 //     if((totalSum-d<0) || (totalSum-d)%2) return false;
-
 //     return findWays(arr,(totalSum-d)/2);
 // }
