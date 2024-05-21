@@ -41,53 +41,30 @@ ll nCk(ll n, ll k){
 
 /*-----------------------------------------------*/
 
-void solve(){   
-    string s;cin>>s;
-    int ones=0,zeros=0;
-    int len=s.length();
-    for(int i=0;i<len;i++){
-        if(s[i]=='0') zeros++;
-        else ones++;
+void lb(vi &arr,int s,int e,int key,int &ans){
+    while(s<=e){
+        int mid=s+(e-s)/2;
+        if(arr[mid]>=key){
+            ans=min(ans,mid);
+            e=mid-1;
+        }else{
+            s=mid+1;
+        }
     }
-    string t;
-    int ans=abs(ones-zeros);
-    if(zeros==ones) cout<<0<<nl;
-    else if(zeros>ones){
-        int cntzeros=0; int i=0;
-        while(i<len && cntzeros!=ones){
-            t.push_back(s[i]);
-            i++;
-            if(s[i]=='0') cntzeros++;
-        }
-        while(i<len){
-            if(s[i]=='1'){
-                t.push_back(s[i]);
-            }
-            i++;
-        }
+} 
 
-        for(int i=0;i<t.length();i++){
-            if(s[i]!=t[i]) ans++;
-        }
-        cout<<ans<<nl;
-    }else{
-        int cntones=0; int i=0;
-        while(i<len && cntones!=zeros){
-            t.push_back(s[i]);
-            i++;
-            if(s[i]=='1') cntones++;
-        }
-        while(i<len){
-            if(s[i]=='0'){
-                t.push_back(s[i]);
-            }
-            i++;
-        }
-        for(int i=0;i<t.length();i++){
-            if(s[i]!=t[i]) ans++;
-        }
-        cout<<ans<<nl;
+void solve(){
+    int n;
+    cin>>n;
+    vi arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
     }
+
+    int x;cin>>x;
+    int ans=n;
+    lb(arr,0,n-1,x,ans);
+    cout<<ans<<nl;
 }
 
 int main(){
@@ -99,9 +76,6 @@ int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
-    cin>>t;
-    while(t--){
-        solve();
-    }
+    
+    solve();
 }
