@@ -42,15 +42,28 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    int n,k;
+    cin>>n>>k;
+    vector<int> arr(n);
+    for(int i=0;i<n;i++) cin>>arr[i];
+    int mini=k,cnteven=0;
 
-    cout<<first*second<<nl;
+        for(int i=0;i<n;i++){
+            if(arr[i]%k==0){
+                mini=0; break;
+            }
+            mini=min(mini,k-(arr[i]%k));
+            if((arr[i]&1)== 0) cnteven++;
+            // if(arr[i] & 1 == 0) cnteven++;
+        }
+        if(k!=4) cout<<mini<<nl;
+        else{
+            if(cnteven>=2) cout<<0<<endl;
+            else{
+                mini=min(mini,2-cnteven);
+                cout<<mini<<nl;
+            }
+        }
 }
 
 int main(){

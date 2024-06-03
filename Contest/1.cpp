@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -42,28 +43,30 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    int p1,p2,p3;
-    cin>>p1>>p2>>p3;
-    // int x=p3-(p2-p1);
-    int total=p1+p2+p3;
-    if(total & 1) cout<<-1<<nl;
-    else{
-        int ans=0;
-        int x1=(p3+p2-p1)/2;
-        int x2=p3-x1;
-        int mini=min(x1,x2);
-        int maxi=max(x1,x2);
-
-        int first=min(mini,p1);
-        int second=min(maxi,p2);
-
-        ans=ans+first+second;
-        p2=p2-second;
-        p1=p1-first;
-        ans+=min(p1,p2);
-
-        cout<<ans<<nl;
+    int n;cin>>n;
+    vvi arr(n);
+    for(int i=0;i<n;i++){
+        int x; cin>>x;
+        for(int j=0;j<x;j++){
+            int y;cin>>y;
+            arr[i].push_back(y);
+        }
     }
+
+    for(int i=0;i<n;i++){
+        sort(arr[i].begin(),arr[i].end());
+    }
+
+    ll secondsum=0;
+    int firstmin=1e9+7,secondmin=1e9+7;
+    for(int i=0;i<n;i++){
+        firstmin=min(firstmin,arr[i][0]);
+        secondsum+=arr[i][1];
+        secondmin=min(secondmin,arr[i][1]);
+    }
+
+    ll ans= (secondsum-secondmin+firstmin);
+    cout<<ans<<nl;
 }
 
 int main(){

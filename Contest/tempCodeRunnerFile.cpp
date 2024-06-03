@@ -1,1 +1,3 @@
-(time[end+1]-time[end])/(dist[end+1]-dist[end])
+if(!find && ele>=min(a[i],b[i]) && ele<=max(a[i],b[i])){
+            find=1;
+        }

@@ -42,15 +42,30 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    string s;
+    cin>>s;
 
-    cout<<first*second<<nl;
+    int len=len(s);   //for finding length of string
+    int totalones=count(all(s),'1');
+    int totalzeros=len-totalones;
+
+    int ans=0;
+    int diff=totalones-totalzeros;
+    if(diff==0) cout<<0<<nl;
+    else{
+        int i=0;
+        while(i<s.length()){
+            if(s[i]=='0'){
+                if(totalones>0) totalones--;
+                else break;
+            }else{
+                if(totalzeros>0) totalzeros--;
+                else break;
+            }
+            i++;
+        }
+        cout<<len-i<<nl;
+    }
 }
 
 int main(){

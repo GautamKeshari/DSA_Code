@@ -1,10 +1,8 @@
-55 54 53 50 52 40 30 
-54 52 53 50 30 40 
-Print the array now: 
-55 53 54 52 50 
-
-Heap Sort is :
-Print the array now: 
-50 52 53 54 55 
-Using priority Queue here
-2
+10
+10->left 15
+15->left 25
+15->right 35
+35->left 65
+10->right 20
+20->left 45
+20->right 60

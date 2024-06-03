@@ -41,7 +41,7 @@ ll nCk(ll n, ll k){
 
 /*-----------------------------------------------*/
 
-void lb(vi &arr,int s,int e,int key,int &ans){
+void ub(vi &arr,int s,int e,int key,int &ans){
     while(s<=e){
         int mid=s+(e-s)/2;
         if(arr[mid]>key){
@@ -63,7 +63,7 @@ void solve(){
 
     int x;cin>>x;
     int ans=n;
-    lb(arr,0,n-1,x,ans);
+    ub(arr,0,n-1,x,ans);
     cout<<ans<<nl;
 }
 

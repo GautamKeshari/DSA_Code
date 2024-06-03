@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=Kl8PPy3rFRE
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -42,15 +44,18 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
+    int n;cin>>n;
     string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
 
-    cout<<first*second<<nl;
+    vector<bool> vis(26,0);
+    ll sum=0;
+    for(int i=0;i<n;i++){
+        if(!vis[s[i]-'a']){
+            sum+=(n-i);
+            vis[s[i]-'a']=1;
+        }
+    }
+    cout<<sum<<nl;
 }
 
 int main(){

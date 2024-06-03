@@ -12,7 +12,7 @@
 //                 s=mid+1;
 //             }else if(arr[mid+1]<arr[mid] ){
 //                 e=mid;
-//                 ans=mid;
+//                 ans=mid; 
 //             }
 //         }
 //         return ans;

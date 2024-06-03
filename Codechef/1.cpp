@@ -1,3 +1,7 @@
+// https://www.codechef.com/problems/SUMMODE?tab=statement
+
+// https://www.youtube.com/watch?v=SUvSziJDbi8
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -21,6 +25,7 @@ using namespace std;
 #define pb push_back
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
+#define int long long
 
 // Constants
 const ll MOD=1e9+7;
@@ -42,18 +47,27 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
 
-    cout<<first*second<<nl;
+    int sum=0; ll cnt=0;
+    map<int,int> mp;
+    mp[0]=1;
+    for(int i=0;i<n;i++){
+        sum+= (s[i]=='0')? -1:1;
+        if(mp.find(sum)!=mp.end()){
+            cnt+=mp[sum];
+        }
+        mp[sum]++;
+    }
+
+    cnt+=((n*(n+1)))/2;
+    cout<<cnt<<endl;
 }
 
-int main(){
+signed main(){
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);

@@ -1,1 +1,1 @@
-10
+No lower bound exist

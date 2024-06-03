@@ -1,3 +1,6 @@
+// Floor =>  (largest number in array)<=x
+// Ceil =>   (smallest number in array)>=x      => It is just like lower bound
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -39,18 +42,33 @@ ll nCk(ll n, ll k){
     return res;
 }
 
-/*-----------------------------------------------*/
+/*-----------------------------------------------*/ 
+
+void ub(vi &arr,int s,int e,int key,int &ans){
+    while(s<=e){
+        int mid=s+(e-s)/2;
+        if(arr[mid]<=key){
+            ans=max(ans,mid);
+            s=mid+1;
+        }else{
+            e=mid-1;
+        }
+    }
+} 
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    int n;
+    cin>>n;
+    vi arr(n);
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
 
-    cout<<first*second<<nl;
+    int x;cin>>x;
+    int ans=-1;
+    ub(arr,0,n-1,x,ans);
+    if(ans!=-1) cout<<arr[ans]<<nl;
+    else cout<<"No Floor value exist"<<nl;
 }
 
 int main(){
@@ -62,9 +80,6 @@ int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int t=1;
-    cin>>t;
-    while(t--){
-        solve();
-    }
+    
+    solve();
 }

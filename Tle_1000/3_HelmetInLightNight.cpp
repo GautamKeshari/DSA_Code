@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -42,15 +43,30 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    int n,p;
+    cin>>n>>p;
 
-    cout<<first*second<<nl;
+    vii l(n);
+    for(int i=0;i<n;i++) cin>>l[i].second;  //share
+    for(int i=0;i<n;i++) cin>>l[i].first;    // cost
+
+    sort(l.begin(),l.end());
+    int ans=p,houses=n-1,ind=0;
+
+    while(houses>0){
+        int noofshare=l[ind].second;
+        int cost=l[ind].first;
+
+        if(ind<n && cost<p){
+            ans+=min(houses,noofshare)*cost;
+            houses=houses-min(houses,noofshare);
+            ind++;
+        }else{
+            ans+=houses*p;
+            break;
+        }
+    }
+    cout<<ans<<nl;
 }
 
 int main(){

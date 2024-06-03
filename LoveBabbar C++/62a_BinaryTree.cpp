@@ -194,10 +194,10 @@ void buildFromLevelOrder(node* &root){     //here we have to build tree,if root=
 
 int main(){
 
-    #ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
 
     node* root =NULL;
     // 10 15 25 -1 -1 35 65 -1 -1 -1 20 45 -1 -1 60 -1 -1

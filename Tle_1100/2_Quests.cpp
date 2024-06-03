@@ -1,3 +1,4 @@
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -42,15 +43,21 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
-    
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
+    int n,k; cin>>n>>k;
+    vector<int> a(n),b(n);
+    for(int i=0;i<n;i++) cin>>a[i];
+    for(int i=0;i<n;i++) cin>>b[i];
+    int sumtoi=0,i=0; int maxi=0; int ans=0;
+    while(i<n){
+        if(i==k) break;
+        sumtoi+=a[i];
+        maxi=max(maxi,b[i]);
 
-    cout<<first*second<<nl;
+        int x=sumtoi + (maxi*(k-(i+1)));
+        ans=max(ans,x);
+        i++;
+    }
+    cout<<ans<<nl;
 }
 
 int main(){

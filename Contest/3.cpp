@@ -1,39 +1,86 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int t;cin>>t;
-    while(t--){
-        int n,k;
-        cin>>n>>k;
-        int x=0,y=n/2;
-    	if(n&1){
-    	    x=n-1;
-    	    cout<<n-1<<" ";
-    	}else{
-    	    x=n;
-    	    cout<<n<<" ";
-    	} 
-    	if(k>1) cout<<y<<" ";
-    	int count=2;
-        
-        for(int i=1;i<y && count<=k;i++,count++){
-            cout<<i<<" ";
-        }
-        for(int i=y+1;i<x && count<=k;i++,count++){
-            cout<<i<<" ";
-        }
-        cout<<"\n";
+#define nl "\n"
+#define sp " " 
+
+//Types
+#define ui unsigned int
+#define us unsigned short
+#define ull unsigned long long
+#define ll long long
+#define ld long double
+#define vll vector<ll>
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define vii vector<pair<int,int>>
+#define pii pair<int,int>
+
+// Utils
+#define len(x) int((x).size())
+#define pb push_back
+#define all(n) n.begin(), n.end()
+#define rall(n) n.rbegin(), n.rend()
+
+// Constants
+const ll MOD=1e9+7;
+
+// Helper functions
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+ll getRandomNumber(ll l,ll r){ return uniform_int_distribution<ll>(l,r)(rng) ;}
+bool odd(ll num) {return ((num & 1)==1); }
+bool even(ll num) {return ((num & 1)==0); }
+ll nCk(ll n, ll k){
+    ll res=1;
+    for(ll i=0;i<k;i++){
+        res=res * (n-i);
+        res=res / (i+1);
     }
+    return res;
 }
 
+/*-----------------------------------------------*/
+bool comp(pii x,pii y){
+    return (x.first < y.first);
+}
 
-3
-3 2
-3 3
-4 2
+void solve(){
+    int n;
+    cin>>n;
+    vii arr;
+    vi a,ans(n);
+    for(int i=0;i<n;i++){
+        int x; cin>>x;
+        arr.pb({x,i});
+        a.pb(x);
+    }  
+    sort(arr.begin(),arr.end(),comp);       //for getting index
+    sort(a.begin(),a.end());
+    ll sum=0;
+    for(int i=0;i<n;i++){
+        sum+=a[i];
+        int ind=upper_bound(a.begin(),a.end(),sum)-a.begin();
+        
+        int corrInd=arr[i].second;
+        ans[corrInd]=ind-1;
+    }
 
+    for(int i=0;i<n;i++) cout<<ans[i]<<" ";
+    cout<<nl;
+}
 
-2 3
-1 2 3
-2 4
+int main(){
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int t=1;
+    cin>>t;
+    while(t--){
+        solve();
+    }
+}
