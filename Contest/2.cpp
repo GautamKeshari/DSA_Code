@@ -42,15 +42,15 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    string s; cin>>s;
-    int first=1,second=1;
-    if(s[0]=='1' && s[1]=='1') first=21;
-    else if(s[0]=='1' || s[1]=='1') first=11;
+    int n; cin>>n;
+    vi a(n),p(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    for(int i=0;i<n;i++){
+        cin>>p[i];
+    }
     
-    if(s[2]=='1' && s[3]=='1') second=21;
-    else if(s[2]=='1' || s[3]=='1') second=11;
-
-    cout<<first*second<<nl;
 }
 
 int main(){

@@ -165,6 +165,23 @@ Node* delFromBST(Node* root,int val){
 
 }
 
+Node* inPre(Node* root,int key){
+    if(root==NULL){
+        return NULL;
+    }
+    Node* temp=root;
+    Node* ans=NULL;
+    while(temp){
+        if(temp->key<key){
+            ans=temp;
+            temp=temp->right;
+        }else{
+            temp=temp->left;
+        }
+    }
+    return ans;
+}
+
 // inorder successor
 Node* inSuc(Node* root,int key){   //just greater value than key in inorder traversal of BST
     if(root==NULL){
@@ -180,23 +197,6 @@ Node* inSuc(Node* root,int key){   //just greater value than key in inorder trav
             temp=temp->right;
         }
         
-    }
-    return ans;
-}
-
-Node* inPre(Node* root,int key){
-    if(root==NULL){
-        return NULL;
-    }
-    Node* temp=root;
-    Node* ans=NULL;
-    while(temp){
-        if(temp->data > key){
-            temp=temp->left;
-        }else{
-            ans=temp;
-            temp=temp->right;
-        }
     }
     return ans;
 }

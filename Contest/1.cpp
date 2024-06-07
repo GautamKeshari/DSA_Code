@@ -41,32 +41,36 @@ ll nCk(ll n, ll k){
 }
 
 /*-----------------------------------------------*/
+long long lcm(int a, int b) 
+{ 
+    return (a / __gcd(a, b)) * b; 
+} 
 
 void solve(){
     int n;cin>>n;
-    vvi arr(n);
+    vll k(n);
+    ll findlcm=1;
     for(int i=0;i<n;i++){
-        int x; cin>>x;
-        for(int j=0;j<x;j++){
-            int y;cin>>y;
-            arr[i].push_back(y);
-        }
+        cin>>k[i];
+        // if(i>0) findlcm=lcm(k[i],k[i-1]);
+        ll gcd=__gcd(findlcm,k[i]);
+        gcd=k[i]/gcd;
+        findlcm=findlcm*gcd;
+    }
+    vi ans;
+    ll sum=0;
+    for(auto it:k){
+        int x=(findlcm/it);
+        sum+=x;
+        ans.push_back(x);
     }
 
-    for(int i=0;i<n;i++){
-        sort(arr[i].begin(),arr[i].end());
+    if(sum>=findlcm) cout<<-1<<nl;
+    else{
+        for(auto it:ans) cout<<it<<" ";
+        cout<<nl;
     }
 
-    ll secondsum=0;
-    int firstmin=1e9+7,secondmin=1e9+7;
-    for(int i=0;i<n;i++){
-        firstmin=min(firstmin,arr[i][0]);
-        secondsum+=arr[i][1];
-        secondmin=min(secondmin,arr[i][1]);
-    }
-
-    ll ans= (secondsum-secondmin+firstmin);
-    cout<<ans<<nl;
 }
 
 int main(){
