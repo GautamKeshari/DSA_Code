@@ -30,6 +30,8 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 ll getRandomNumber(ll l,ll r){ return uniform_int_distribution<ll>(l,r)(rng) ;}
 bool odd(ll num) {return ((num & 1)==1); }
 bool even(ll num) {return ((num & 1)==0); }
+ll min(ll a,ll b) {return (a<b)? a:b; }
+ll max(ll a,ll b) {return (a>b)? a:b; }
 ll nCk(ll n, ll k){
     ll res=1;
     for(ll i=0;i<k;i++){
@@ -42,15 +44,20 @@ ll nCk(ll n, ll k){
 /*-----------------------------------------------*/
 
 void solve(){
-    int n; cin>>n;
-    vi a(n),p(n);
-    for(int i=0;i<n;i++){
-        cin>>a[i];
+    ll n,a,b; cin>>n>>a>>b;
+    ll k=min(n,b);
+
+    ll maxprofit=0;
+
+    for(int i=0;i<=k;i++){
+        ll x= (b+1) *(ll)i;
+        ll y= ((ll)i * ((ll)i+1))/2;
+
+        ll profit=(a*(n-(ll)i))+ (x-y);
+        maxprofit=max(maxprofit,profit);
     }
-    for(int i=0;i<n;i++){
-        cin>>p[i];
-    }
-    
+
+    cout<<maxprofit<<nl;
 }
 
 int main(){

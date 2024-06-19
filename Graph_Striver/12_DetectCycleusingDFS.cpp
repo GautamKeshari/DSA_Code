@@ -28,6 +28,7 @@
         
 //         for(int i=0;i<V;i++){
 //             if(!vis[i]){
+//                 // If we get cycle at any node then we stop traversing further and return ans.
 //                 if(detect(i,adj,vis,-1)){
 //                     return true; 
 //                 }

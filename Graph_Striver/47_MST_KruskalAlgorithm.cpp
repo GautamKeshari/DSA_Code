@@ -70,7 +70,7 @@ class Solution
                 int wt=it[1];
                 
                 edges.push_back({wt,{node,adjN}});
-                // edges.push_back({wt,{adjN,node}});
+                // edges.push_back({wt,{adjN,node}}); beacause if same edges already exist in reverse order then disjoint set D.S. discard them.
             }
         }
         

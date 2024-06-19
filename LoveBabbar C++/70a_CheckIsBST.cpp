@@ -1,4 +1,4 @@
-// https://practice.geeksforgeeks.org/batch/cip-1/track/P100-Binary-Search-Tree/problem/check-for-bst
+// https://www.geeksforgeeks.org/problems/check-for-bst/1
 
 // //{ Driver Code Starts
 // #include <bits/stdc++.h>

@@ -22,6 +22,7 @@
 //                 for(auto it:usedOnLevel){
 //                     st.erase(it);
 //                 }
+//                 usedOnLevel.clear();
 //             }
 //             string word=top.back();
 //             // if at any level we get the ans

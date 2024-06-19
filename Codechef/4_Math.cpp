@@ -1,3 +1,6 @@
+// https://www.youtube.com/watch?v=GBrvt5rpUMU
+// https://www.codechef.com/problems/TRIPRI
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -77,8 +80,23 @@ bool binarySearch(vector<ll> arr, ll key) {
 /*-----------------------------------------------*/
 
 void solve(){
-    int n;
+    ll n;
     cin>>n;
+    vector<ll> vec=sieve(1LL*sqrt(n));
+    bool flag=0;
+    for(auto it:vec){
+        ll a=(n-4-(it*it));
+        if(a<=0) continue;
+        
+        ll x=sqrt(a);
+        if(x*x==a && x!=it && x!=2 && binarySearch(vec,x)){
+            flag=1;
+            break;
+        }
+    }
+    
+    if(flag==1) cout<<"Yes"<<"\n";
+    else cout<<"No"<<"\n";
 }
 
 int main(){

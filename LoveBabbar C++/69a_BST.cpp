@@ -126,7 +126,7 @@ int maxVal(Node* root){
 Node* delFromBST(Node* root,int val){
     if(root==NULL)
         return NULL;
-        
+
     if(root->data == val){
         //0 child
         if(root->left==NULL && root->right==NULL){
@@ -134,7 +134,6 @@ Node* delFromBST(Node* root,int val){
             return NULL;
         }
         //1 child
-
         //only left child exist
         if(root->left!=NULL && root->right==NULL){
             Node* temp=root->left;
@@ -146,15 +145,14 @@ Node* delFromBST(Node* root,int val){
             delete root;
             return temp;
         }
-
         //2 child
         if(root->left!=NULL && root->right!=NULL){
+            // here either remove max from left subtree or either remove min from right subtree.
             int max=maxVal(root->left);
             root->data=max;
             root->left = delFromBST(root->left,max);
             return root;
         }
-
     }else if(root->data > val){
         root->left= delFromBST(root->left,val);
         return root;      //doubt
@@ -162,7 +160,6 @@ Node* delFromBST(Node* root,int val){
         root->right= delFromBST(root->right,val);
         return root;     //doubt
     }
-
 }
 
 Node* inPre(Node* root,int key){

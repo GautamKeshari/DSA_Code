@@ -54,17 +54,18 @@ class heap{
             int leftIndex=2*i;
             int rightIndex=2*i+1;
 
-            //find index of maximum of leftchild and rightchild by comparing their value.
-            int maxIndex=(arr[leftIndex]>arr[rightIndex]) ? leftIndex : rightIndex;
-
-            if(arr[i] < arr[maxIndex] && maxIndex <= size)
+            if(leftIndex <= size && arr[i] < arr[leftIndex] )
             {
-                swap(arr[i],arr[maxIndex]);
-                i=maxIndex;
+                swap(arr[i],arr[leftIndex]);
+                i=leftIndex;
+            } 
+            else if(rightIndex <= size && arr[i] < arr[rightIndex] )
+            {
+                swap(arr[i],arr[rightIndex]);
+                i=rightIndex;
             }else{
                 return;
             }
-            
         }
     }
 };
