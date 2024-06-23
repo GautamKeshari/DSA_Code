@@ -1,3 +1,7 @@
+// https://codeforces.com/contest/1985/problem/H1
+
+// https://www.youtube.com/watch?v=H3UnizqCWLA
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -101,7 +105,7 @@ void solve() {
     
     // for each column
     for (int j = 0; j < m; j++) {
-        set<int> st;
+        unordered_set<int> st;
         int size = 0;
         for (int i = 0; i < n; i++) {
             if (j - 1 >= 0 && arr[i][j - 1] != 0) st.insert(arr[i][j - 1]);

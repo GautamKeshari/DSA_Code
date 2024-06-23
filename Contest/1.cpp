@@ -77,8 +77,29 @@ bool binarySearch(vector<ll> arr, ll key) {
 /*-----------------------------------------------*/
 
 void solve(){
-    int n;
-    cin>>n;
+    ll n,c;
+    cin>>n>>c;
+    vll arr(n);
+    for(auto &it:arr) cin>>it;
+    swap(arr[0],arr[n-1]);
+    sort(arr.begin(),arr.end()-1);
+    // cout<<"val "<<arr[n-1]<<nl;
+    vll ans;
+    int cnt=n;
+    for(int i=0;i<n-1;i++){
+        ll sum=0;
+        for(int j=i+1;j<n;j++){
+            sum+=(arr[i]*arr[j]);
+        }
+        cout<<"sum "<<sum<<" c "<<c<<nl;
+        if(sum<c){
+            c=c-sum;
+            cnt--;
+        }else{
+            break;
+        }
+    }
+    cout<<cnt<<nl;
 }
 
 int main(){

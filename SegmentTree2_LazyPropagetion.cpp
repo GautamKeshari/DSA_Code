@@ -20,9 +20,9 @@ public:
 	void apply(int v, int tl, int tr, int val){ // [tl, tr] is node range
 		if(tl != tr){ // leaf nodes can't be lazy, as they have no-one to propogate to
 			isLazy[v] = true;
-			unpropUpd[v] = val; //stacking up the unpropogaed value, which i'll propogate down
+			unpropUpd[v] += val; //stacking up the unpropogaed value, which i'll propogate down
 		}
-		t[v] = (tr - tl + 1) * val; // this "= shows assign update", "+= shows range add update" 
+		t[v] += (tr - tl + 1) * val; // this "= shows assign update", "+= shows range add update" 
 	}
 	
 	// assigning the value whatsoever we had on 'v' to its children ('2*v' & '2*v+1')

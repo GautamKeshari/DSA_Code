@@ -30,34 +30,35 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 ll getRandomNumber(ll l,ll r){ return uniform_int_distribution<ll>(l,r)(rng) ;}
 bool odd(ll num) {return ((num & 1)==1); }
 bool even(ll num) {return ((num & 1)==0); }
-ll min(ll a,ll b) {return (a<b)? a:b; }
-ll max(ll a,ll b) {return (a>b)? a:b; }
-ll nCk(ll n, ll k){
-    ll res=1;
-    for(ll i=0;i<k;i++){
-        res=res * (n-i);
-        res=res / (i+1);
-    }
-    return res;
-}
 
 /*-----------------------------------------------*/
 
 void solve(){
-    ll n,a,b; cin>>n>>a>>b;
-    ll k=min(n,b);
-
-    ll maxprofit=0;
-
-    for(int i=0;i<=k;i++){
-        ll x= (b+1) *(ll)i;
-        ll y= ((ll)i * ((ll)i+1))/2;
-
-        ll profit=(a*(n-(ll)i))+ (x-y);
-        maxprofit=max(maxprofit,profit);
+    ll n,c;
+    cin>>n>>c;
+    vll arr(n);
+    ll sum=0;
+    for(auto &it:arr){
+        cin>>it;
+        sum+=it;
     }
-
-    cout<<maxprofit<<nl;
+    // swap(arr[0],arr[n-1]);
+    sort(arr.begin()+1,arr.end());
+    ll total=0;
+    if(arr[0]*(sum-arr[0])<=c) cout<<1<<nl;
+    else{
+        bool f=0;
+        for(int i=1;i<n;i++){
+            total+=arr[i];
+            ll rem=sum-total;
+            if((total*rem)>c){
+                cout<<i-1<<nl;
+                f=1;
+                break;
+            }
+        }
+        if(f==0) cout<<n-1<<nl;
+    }
 }
 
 int main(){
